@@ -1,5 +1,5 @@
 /* ============================================
-   VARIABLES Y RESET (v1.5)
+   VARIABLES Y RESET (v1.7)
    ============================================ */
 :root {
   --paper: #FFFFFF;
@@ -24,7 +24,7 @@
   --radius: 16px;
   --radius-sm: 10px;
 
-  --header-height: 60px;
+  --header-height: 54px;   /* 🔵 v1.7: antes 60px */
   --container-width: 1240px;
 }
 
@@ -90,17 +90,17 @@ button { font-family: inherit; cursor: pointer; }
   gap: 12px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--hero-text);
   letter-spacing: -0.01em;
 }
 
 .brand-badge {
-  width: 34px; height: 34px;
+  width: 30px; height: 30px;   /* 🔵 v1.7: antes 34px */
   border-radius: 50%;
   background: var(--teal);
   display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 0.95rem;
+  font-weight: 800; font-size: 0.85rem;
   color: #0A0E12;
   flex-shrink: 0;
 }
@@ -113,7 +113,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .topbar-links a {
   position: relative;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--hero-text-soft);
   padding: 8px 14px;
@@ -128,7 +128,7 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute;
   left: 14px;
   right: 14px;
-  bottom: -18px;
+  bottom: -15px;   /* 🔵 v1.7: ajustado al nuevo header height */
   height: 2px;
   background: var(--teal);
 }
@@ -185,14 +185,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================
-   SECCIÓN 1: HERO
+   SECCIÓN 1: HERO (v1.7 - más compacto)
    ============================================ */
 .hero-section {
   flex: 0 0 auto;
   background: linear-gradient(135deg, #0A0E12 0%, #0F1418 100%);
   position: relative;
   overflow: hidden;
-  padding: 28px 0 24px 0;
+  padding: 14px 0 12px 0;   /* 🔵 v1.7: antes 28/24px */
 }
 
 .orb {
@@ -220,39 +220,40 @@ button { font-family: inherit; cursor: pointer; }
 .hero-eyebrow {
   display: inline-block;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--teal);
-  margin-bottom: 16px;
+  margin-bottom: 12px;   /* 🔵 v1.7: antes 16px */
 }
 
+/* 🔵 v1.7: H1 más chico y preparado para 3 líneas */
 .hero-text-content h1 {
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
-  line-height: 1.08;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.1;
   color: var(--hero-text);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-weight: 800;
 }
 
 .hero-text-content h1 .accent { color: var(--teal); }
 
 .hero-text-content .role {
-  font-size: 0.96rem;
+  font-size: 0.88rem;   /* 🔵 v1.7: antes 0.96rem */
   color: var(--hero-text-soft);
   max-width: 52ch;
-  margin-bottom: 14px;
-  line-height: 1.6;
+  margin-bottom: 10px;
+  line-height: 1.55;
 }
 
 .hero-text-content .byline {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--hero-text-soft);
-  margin-bottom: 22px;
+  margin-bottom: 16px;   /* 🔵 v1.7: antes 22px */
   flex-wrap: wrap;
 }
 
@@ -267,7 +268,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .hero-cta {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -275,16 +276,16 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.88rem;
+  font-size: 0.85rem;   /* 🔵 v1.7: antes 0.88rem */
   font-weight: 600;
-  padding: 12px 24px;
+  padding: 10px 22px;   /* 🔵 v1.7: antes 12/24px */
   border-radius: 999px;
   transition: transform 0.2s ease, background 0.2s ease, border-color .2s ease, color .2s ease;
   border: 1px solid transparent;
   cursor: pointer;
 }
 
-.btn svg { width: 16px; height: 16px; }
+.btn svg { width: 15px; height: 15px; }
 
 .btn-primary { background: var(--teal); color: #0A0E12; }
 .btn-primary:hover { transform: translateY(-2px); background: #16B394; }
@@ -302,7 +303,7 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 300px;
+  max-width: 220px;   /* 🔵 v1.7: antes 300px */
   aspect-ratio: 1;
   margin: 0 auto;
 }
@@ -322,12 +323,12 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;   /* 🔵 v1.7: antes 18px */
 }
 
 .hero-services li {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.86rem;   /* 🔵 v1.7: antes 0.9rem */
   font-weight: 500;
   color: var(--hero-text-soft);
   padding-left: 18px;
@@ -347,7 +348,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================
-   SECCIÓN 2: CARRUSEL BLANCO (v1.5)
+   SECCIÓN 2: CARRUSEL BLANCO (v1.7 - MÁS ALTO)
    ============================================ */
 .about-section {
   flex: 1 1 auto;
@@ -355,7 +356,7 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--paper);
   display: flex;
   align-items: center;
-  padding: 16px 0;
+  padding: 6px 0;   /* 🔵 v1.7: antes 16px - mucha más altura útil */
 }
 
 .about-wrap {
@@ -374,6 +375,7 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  padding: 8px 0;   /* 🔵 v1.7: aire interno del carrusel */
 }
 
 .pages-viewport {
@@ -684,26 +686,26 @@ button { font-family: inherit; cursor: pointer; }
 .tcard span { font-size: 0.72rem; color: var(--ink-soft); }
 
 /* ============================================
-   NAVEGACIÓN DEL CARRUSEL
+   NAVEGACIÓN DEL CARRUSEL (v1.7 - más compacta)
    ============================================ */
 .pages-nav {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-top: 14px;
+  margin-top: 8px;   /* 🔵 v1.7: antes 14px */
   flex-shrink: 0;
-  padding-top: 14px;
+  padding-top: 8px;   /* 🔵 v1.7: antes 14px */
   border-top: 1px solid var(--rule);
 }
 
 .nav-arrow {
-  width: 34px; height: 34px;
+  width: 32px; height: 32px;   /* 🔵 v1.7: antes 34px */
   border-radius: 50%;
   background: var(--paper-soft);
   border: 1px solid var(--rule);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--ink-soft);
   transition: all 0.2s;
 }
@@ -732,14 +734,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================
-   SECCIÓN 3: FOOTER
+   SECCIÓN 3: FOOTER (v1.7 - ultra compacto)
    ============================================ */
 .footer-section {
   flex: 0 0 auto;
   background: var(--footer-bg);
   color: var(--hero-text);
   border-top: 1px solid var(--rule-light);
-  padding: 18px 0;
+  padding: 10px 0;   /* 🔵 v1.7: antes 18px */
 }
 
 .footer-wrap { width: 100%; }
@@ -765,7 +767,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .footer-cta h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;   /* 🔵 v1.7: antes 1.1rem */
   font-weight: 700;
   color: var(--hero-text);
   line-height: 1.25;
@@ -774,14 +776,14 @@ button { font-family: inherit; cursor: pointer; }
 .footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;   /* 🔵 v1.7: antes 8px */
 }
 
 .footer-contact a {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.84rem;
+  font-size: 0.8rem;   /* 🔵 v1.7: antes 0.84rem */
   color: var(--hero-text-soft);
   transition: color 0.2s;
 }
@@ -789,7 +791,7 @@ button { font-family: inherit; cursor: pointer; }
 .footer-contact a:hover { color: var(--teal); }
 
 .footer-contact svg {
-  width: 16px; height: 16px;
+  width: 14px; height: 14px;
   flex-shrink: 0;
   color: var(--teal);
 }
@@ -797,11 +799,11 @@ button { font-family: inherit; cursor: pointer; }
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .footer-logo {
-  width: 44px; height: 44px;
+  width: 36px; height: 36px;   /* 🔵 v1.7: antes 44px */
   border-radius: 50%;
   border: 1.5px solid var(--teal);
   display: flex;
@@ -809,21 +811,21 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--teal);
   flex-shrink: 0;
 }
 
 .footer-brand-text {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--hero-text-soft);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .footer-brand-text strong { color: var(--hero-text); font-weight: 600; }
 .footer-brand-text span {
   display: block;
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   opacity: 0.7;
   margin-top: 2px;
 }
@@ -834,8 +836,8 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  font-size: 0.7rem;
+  gap: 4px;
+  font-size: 0.68rem;
   color: var(--hero-text-soft);
   transition: color 0.2s;
 }
@@ -843,7 +845,7 @@ button { font-family: inherit; cursor: pointer; }
 .footer-top a:hover { color: var(--teal); }
 
 .footer-top svg {
-  width: 20px; height: 20px;
+  width: 18px; height: 18px;
   animation: bounce-up 2.4s ease-in-out infinite;
 }
 
@@ -891,8 +893,8 @@ button { font-family: inherit; cursor: pointer; }
   .wrap { padding: 0 32px; }
   .topbar { padding: 0 32px; }
 
-  .hero-text-content h1 { font-size: 1.8rem; }
-  .hero-glyph { max-width: 220px; }
+  .hero-text-content h1 { font-size: 1.7rem; }
+  .hero-glyph { max-width: 180px; }
 
   .about-grid {
     grid-template-columns: 1fr;
@@ -948,17 +950,17 @@ button { font-family: inherit; cursor: pointer; }
     flex-wrap: wrap;
   }
 
-  .hero-section { padding: 20px 0 18px 0; }
+  .hero-section { padding: 12px 0 10px 0; }
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 20px;
     text-align: left;
   }
-  .hero-text-content h1 { font-size: 1.5rem; }
-  .hero-text-content .role { font-size: 0.86rem; }
-  .hero-glyph { max-width: 160px; }
+  .hero-text-content h1 { font-size: 1.4rem; }
+  .hero-text-content .role { font-size: 0.82rem; }
+  .hero-glyph { max-width: 140px; }
 
-  .about-section { padding: 12px 0; }
+  .about-section { padding: 4px 0; }
   .about-bio h2 { font-size: 1.4rem; }
   .about-achievements {
     grid-template-columns: 1fr;
@@ -967,9 +969,9 @@ button { font-family: inherit; cursor: pointer; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 18px; }
   .footer-cta { flex-direction: row; gap: 14px; }
-  .footer-cta h3 { font-size: 1rem; }
+  .footer-cta h3 { font-size: 0.95rem; }
   .footer-brand { justify-content: flex-start; }
 
-  .pages-nav { gap: 12px; margin-top: 10px; padding-top: 10px; }
+  .pages-nav { gap: 12px; margin-top: 8px; padding-top: 8px; }
   .nav-arrow { width: 30px; height: 30px; font-size: 1rem; }
 }
