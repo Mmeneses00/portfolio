@@ -1,5 +1,5 @@
 /* ============================================
-   SCRIPT.JS v1.6 - Lógica del portfolio
+   SCRIPT.JS v1.7 - Lógica del portfolio
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -19,14 +19,35 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* --------------------------------------------
-     2. CARRUSEL DE PANELES
+     2. CARRUSEL DE PANELES (v1.7)
      -------------------------------------------- */
   var pagesTrack = document.getElementById('pagesTrack');
-  var pagesDots = document.querySelectorAll('#pagesDots .dot');
-  var btnPrev = document.getElementById('btnPrev');
-  var btnNext = document.getElementById('btnNext');
+  var btnPrev = document.getElementById('arrowPrev');
+  var btnNext = document.getElementById('arrowNext');
+  var labelPrev = document.getElementById('labelPrev');
+  var labelNext = document.getElementById('labelNext');
+  var allPages = document.querySelectorAll('.page');
   var currentPage = 0;
-  var totalPages = pagesDots.length;
+  var totalPages = allPages.length;
+
+  // 🔵 v1.7: nombres de los paneles (para las etiquetas laterales)
+  var pageNames = [];
+  allPages.forEach(function (page) {
+    pageNames.push(page.getAttribute('data-page-name') || '');
+  });
+
+  /**
+   * Actualiza las etiquetas de las flechas laterales.
+   * La etiqueta prev muestra el nombre del panel anterior
+   * La etiqueta next muestra el nombre del panel siguiente
+   */
+  function updateArrowLabels() {
+    var prevIndex = (currentPage - 1 + totalPages) % totalPages;
+    var nextIndex = (currentPage + 1) % totalPages;
+
+    if (labelPrev) labelPrev.textContent = pageNames[prevIndex];
+    if (labelNext) labelNext.textContent = pageNames[nextIndex];
+  }
 
   /**
    * Navega a una página específica del carrusel.
@@ -44,10 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
       pagesTrack.style.transform = 'translateX(-' + (currentPage * 100) + '%)';
     }
 
-    // Actualizar dots
-    pagesDots.forEach(function (dot, i) {
-      dot.classList.toggle('active', i === currentPage);
-    });
+    // 🔵 v1.7: actualizar etiquetas de las flechas laterales
+    updateArrowLabels();
 
     // Actualizar enlaces del topbar que tengan data-page
     if (topbarLinks) {
@@ -59,26 +78,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  /* --- Flecha anterior --- */
+  /* --- Flecha lateral izquierda --- */
   if (btnPrev) {
     btnPrev.addEventListener('click', function () {
       goToPage(currentPage - 1);
     });
   }
 
-  /* --- Flecha siguiente --- */
+  /* --- Flecha lateral derecha --- */
   if (btnNext) {
     btnNext.addEventListener('click', function () {
       goToPage(currentPage + 1);
     });
   }
-
-  /* --- Clic directo en los dots --- */
-  pagesDots.forEach(function (dot, index) {
-    dot.addEventListener('click', function () {
-      goToPage(index);
-    });
-  });
 
   /* --------------------------------------------
      3. ENLACES DEL HEADER CON data-page
@@ -110,10 +122,8 @@ document.addEventListener('DOMContentLoaded', function () {
   if (topbarLinks) {
     var allLinks = topbarLinks.querySelectorAll('a');
     allLinks.forEach(function (link) {
-      // Si NO tiene data-page, es un enlace de scroll normal
       if (!link.hasAttribute('data-page')) {
         link.addEventListener('click', function () {
-          // Cerrar menú móvil si está abierto
           if (topbarLinks) topbarLinks.classList.remove('open');
           if (navToggle) {
             navToggle.classList.remove('open');
@@ -132,15 +142,13 @@ document.addEventListener('DOMContentLoaded', function () {
     span.addEventListener('click', function () {
       langSpans.forEach(function (s) { s.classList.remove('active'); });
       span.classList.add('active');
-      // Aquí podrías añadir la lógica real de cambio de idioma
     });
   });
 
   /* --------------------------------------------
-     6. NAVEGACIÓN CON TECLADO (opcional)
+     6. NAVEGACIÓN CON TECLADO
      -------------------------------------------- */
   document.addEventListener('keydown', function (e) {
-    // Evitar que las flechas muevan el carrusel si el foco está en un input
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
     if (e.key === 'ArrowLeft') goToPage(currentPage - 1);
