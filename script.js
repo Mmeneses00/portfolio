@@ -1,5 +1,5 @@
 /* ============================================
-   SCRIPT.JS v2.0 - Lógica del portfolio
+   SCRIPT.JS v2.2 - Lógica del portfolio
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -76,39 +76,29 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* --------------------------------------------
-     3. ENLACES DEL HEADER
+     3. TODOS LOS ELEMENTOS CON data-page
+     (header + botones del hero + cualquier otro)
      -------------------------------------------- */
-  if (topbarLinks) {
-    var topLinks = topbarLinks.querySelectorAll('a[data-page]');
+  var allDataPageEls = document.querySelectorAll('[data-page]');
 
-    topLinks.forEach(function (link) {
-      link.addEventListener('click', function (e) {
+  allDataPageEls.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      // Si es un link con href tipo #s3 y tiene data-page, lo interceptamos
+      var page = parseInt(el.getAttribute('data-page'), 10);
+
+      if (!isNaN(page)) {
         e.preventDefault();
-        var page = parseInt(link.getAttribute('data-page'), 10);
-        if (!isNaN(page)) {
-          goToPage(page);
-        }
+        goToPage(page);
+
+        // Cerrar menú móvil si está abierto
         if (topbarLinks) topbarLinks.classList.remove('open');
         if (navToggle) {
           navToggle.classList.remove('open');
           navToggle.setAttribute('aria-expanded', 'false');
         }
-      });
-    });
-
-    var allLinks = topbarLinks.querySelectorAll('a');
-    allLinks.forEach(function (link) {
-      if (!link.hasAttribute('data-page')) {
-        link.addEventListener('click', function () {
-          if (topbarLinks) topbarLinks.classList.remove('open');
-          if (navToggle) {
-            navToggle.classList.remove('open');
-            navToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
       }
     });
-  }
+  });
 
   /* --------------------------------------------
      4. SELECTOR DE IDIOMA (simulado)
