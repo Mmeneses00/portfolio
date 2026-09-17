@@ -1,5 +1,5 @@
 /* ============================================
-   SCRIPT.JS v2.2 - Lógica del portfolio
+   SCRIPT.JS v2.8 - Lógica del portfolio
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -77,20 +77,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* --------------------------------------------
      3. TODOS LOS ELEMENTOS CON data-page
-     (header + botones del hero + cualquier otro)
      -------------------------------------------- */
   var allDataPageEls = document.querySelectorAll('[data-page]');
 
   allDataPageEls.forEach(function (el) {
     el.addEventListener('click', function (e) {
-      // Si es un link con href tipo #s3 y tiene data-page, lo interceptamos
       var page = parseInt(el.getAttribute('data-page'), 10);
 
       if (!isNaN(page)) {
         e.preventDefault();
         goToPage(page);
 
-        // Cerrar menú móvil si está abierto
         if (topbarLinks) topbarLinks.classList.remove('open');
         if (navToggle) {
           navToggle.classList.remove('open');
