@@ -1,5 +1,5 @@
 /* ============================================
-   SCRIPT.JS v2.8 - Lógica del portfolio
+   SCRIPT.JS v3.2 - Lógica del portfolio
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -98,15 +98,38 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* --------------------------------------------
-     4. SELECTOR DE IDIOMA (simulado)
+     4. SELECTOR DE IDIOMA (dropdown, simulado)
      -------------------------------------------- */
-  var langSpans = document.querySelectorAll('.lang-selector span');
-  langSpans.forEach(function (span) {
-    span.addEventListener('click', function () {
-      langSpans.forEach(function (s) { s.classList.remove('active'); });
-      span.classList.add('active');
+  var langDropdown = document.querySelector('.lang-dropdown');
+  var langCurrent = document.getElementById('langCurrent');
+  var langMenu = document.getElementById('langMenu');
+  var langCodeEl = langCurrent ? langCurrent.querySelector('.lang-code') : null;
+
+  if (langDropdown && langCurrent && langMenu) {
+    langCurrent.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = langDropdown.classList.toggle('open');
+      langCurrent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-  });
+
+    var langOptions = langMenu.querySelectorAll('li[data-lang]');
+    langOptions.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        langOptions.forEach(function (o) { o.classList.remove('active'); });
+        opt.classList.add('active');
+        if (langCodeEl) langCodeEl.textContent = opt.getAttribute('data-lang');
+        langDropdown.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!langDropdown.contains(e.target)) {
+        langDropdown.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   /* --------------------------------------------
      5. NAVEGACIÓN CON TECLADO

@@ -24,12 +24,21 @@
       <a href="#s2" data-page="1">Sobre mí</a>
       <a href="#s2" data-page="2">Experiencia</a>
       <a href="#s2" data-page="3">Contacto</a>
-      <div class="lang-selector">
-        <span class="active">ES</span>
-        <span>EN</span>
-        <span>PT-BR</span>
-        <span>ZH-HK</span>
-        <span>KO</span>
+      <div class="lang-selector" id="langSelector">
+        <span class="lang-label">Language:</span>
+        <div class="lang-dropdown">
+          <button type="button" class="lang-current" id="langCurrent" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-code">EN</span>
+            <svg class="lang-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="lang-menu" id="langMenu" role="listbox">
+            <li role="option" data-lang="EN" class="active">EN</li>
+            <li role="option" data-lang="ES">ES</li>
+            <li role="option" data-lang="PT-BR">PT-BR</li>
+            <li role="option" data-lang="zh-CN">zh-CN</li>
+            <li role="option" data-lang="ko-KR">ko-KR</li>
+          </ul>
+        </div>
       </div>
     </nav>
   </header>
@@ -43,7 +52,7 @@
         <div class="hero-layout">
           <div class="hero-text-content">
             <span class="hero-eyebrow">Desktop Publisher &amp; eLearning Specialist</span>
-            <h1>El contenido <br>cambia de idioma.<br>El diseño no <span class="accent">debería</span>.</h1>
+            <h1>El contenido <br>cambia de idioma.<br>El diseño se <span class="accent">adapta</span>.</h1>
             <p class="role">Maquetación multilingüe y localización de eLearning: <br>adapto cursos, manuales y materiales de video para que <br>se vean igual de cuidados en cualquier idioma de destino.</p>
             <p class="byline">
               <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
