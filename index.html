@@ -11,23 +11,20 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="topbar" id="topbar">
     <div class="topbar-brand">
       <span class="brand-badge">M</span>
       <span class="brand-name">Maximiliano Meneses</span>
     </div>
-
     <button class="topbar-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-
     <nav class="topbar-links" id="topbarLinks" aria-label="Navegación principal">
       <a href="#s1" class="active" data-page="0">Inicio</a>
-      <a href="#s2" data-page="0">Sobre mí</a>
-      <a href="#s2" data-page="1">Experiencia</a>
-      <a href="#s2" data-page="2">Trabajo</a>
-      <a href="#s3">Contacto</a>
+      <a href="#s2" data-page="0">Portfolio</a>
+      <a href="#s2" data-page="1">Sobre mí</a>
+      <a href="#s2" data-page="2">Experiencia</a>
+      <a href="#s2" data-page="3">Contacto</a>
       <div class="lang-selector">
         <span class="active">ES</span>
         <span>EN</span>
@@ -40,16 +37,13 @@
 
   <div class="app-shell">
 
-    <!-- SECCIÓN 1: HERO -->
     <section id="s1" class="hero-section">
       <div class="orb orb-teal"></div>
       <div class="orb orb-red"></div>
       <div class="wrap hero-wrap">
         <div class="hero-layout">
-
           <div class="hero-text-content">
             <span class="hero-eyebrow">Desktop Publisher &amp; eLearning Specialist</span>
-            <!-- 🔵 v1.7: título en 3 líneas -->
             <h1>El texto cambia<br>de idioma.<br>El diseño no <span class="accent">debería</span>.</h1>
             <p class="role">Maquetación multilingüe y localización de eLearning: adapto cursos, manuales y materiales de video para que se vean igual de cuidados en cualquier idioma de destino.</p>
             <p class="byline">
@@ -63,11 +57,11 @@
             <div class="hero-cta">
               <a class="btn btn-primary" href="#s2">
                 Ver mi trabajo
-                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
               <a class="btn btn-ghost" href="#s3">
                 Escribime un mensaje
-                <svg class="btn-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               </a>
             </div>
           </div>
@@ -91,124 +85,26 @@
               <li>Localización</li>
             </ul>
           </aside>
-
         </div>
       </div>
     </section>
 
-    <!-- ============================================
-         SECCIÓN 2: CARRUSEL (v1.7 - con flechas laterales)
-         ============================================ -->
     <section id="s2" class="about-section">
       <div class="wrap about-wrap">
-
-        <!-- Layout del carrusel con flechas laterales -->
         <div class="carousel-layout">
 
-          <!-- 🔵 Flecha izquierda + nombre del panel anterior -->
-          <button type="button" class="carousel-arrow carousel-arrow-prev" id="arrowPrev" aria-label="Panel anterior">
+          <button type="button" class="carousel-arrow" id="arrowPrev" aria-label="Panel anterior">
             <span class="arrow-circle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </span>
-            <span class="arrow-label" id="labelPrev">Herramientas</span>
+            <span class="arrow-label" id="labelPrev">Contacto</span>
           </button>
 
-          <!-- Tarjeta del carrusel -->
           <div class="pages-card">
             <div class="pages-viewport">
               <div class="pages-track" id="pagesTrack">
 
-                <!-- PANEL 1: SOBRE MÍ -->
-                <div class="page" data-page-name="Sobre mí">
-                  <div class="about-grid">
-
-                    <div class="about-photo">
-                      <img src="data:image/jpeg;base64,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" alt="Foto de Maximiliano Meneses">
-                    </div>
-
-                    <div class="about-bio">
-                      <span class="about-eyebrow">Conóceme</span>
-                      <h2>Sobre mí</h2>
-
-                      <div class="about-timeline">
-                        <div class="timeline-item">
-                          <strong>2018 – 2023</strong>
-                          <span>TransPerfect NYC, eLearning</span>
-                        </div>
-                        <div class="timeline-arrow">→</div>
-                        <div class="timeline-item now">
-                          <strong>Hoy</strong>
-                          <span>We Do — dtp &amp; ele</span>
-                        </div>
-                      </div>
-
-                      <p>Vengo del cruce entre la traducción y la maquetación. Cinco años en el equipo de eLearning de <strong>TransPerfect en Nueva York</strong>, ajustando cursos completos para que llegaran a cada mercado sin perder calidad.</p>
-                      <p>Hoy dirijo <strong>We Do</strong>, mi estudio de DTP y localización, como subcontratista de agencias de traducción y, en proyectos grandes, en cooperativa con un colega.</p>
-                    </div>
-
-                    <aside class="about-achievements">
-                      <div class="achievement">
-                        <div class="achievement-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </div>
-                        <div>
-                          <strong>+13 años</strong>
-                          <p>en la industria de la localización</p>
-                        </div>
-                      </div>
-                      <div class="achievement">
-                        <div class="achievement-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                        </div>
-                        <div>
-                          <strong>1.000+</strong>
-                          <p>proyectos en eLearning, DTP y multimedia</p>
-                        </div>
-                      </div>
-                      <div class="achievement">
-                        <div class="achievement-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-                        </div>
-                        <div>
-                          <strong>Idiomas complejos</strong>
-                          <p>CJK, RTL, cirílico, SEA y más</p>
-                        </div>
-                      </div>
-                      <div class="achievement">
-                        <div class="achievement-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        </div>
-                        <div>
-                          <strong>Trabajo con agencias</strong>
-                          <p>bajo NDA, colaborando de cerca en la producción final</p>
-                        </div>
-                      </div>
-                    </aside>
-
-                  </div>
-                </div>
-
-                <!-- PANEL 2: QUÉ HAGO -->
-                <div class="page" data-page-name="Qué hago">
-                  <div class="page-head">
-                    <span class="tag">Qué hago</span>
-                    <h2>Dos oficios, un mismo cuidado</h2>
-                  </div>
-                  <div class="tracks">
-                    <div class="track">
-                      <h3>Maquetación multilingüe</h3>
-                      <p>Manuales, marketing y documentación técnica sin que el diseño se resienta.</p>
-                      <div class="toolrow"><span>InDesign</span><span>Illustrator</span><span>Photoshop</span></div>
-                    </div>
-                    <div class="track">
-                      <h3>Localización de eLearning</h3>
-                      <p>Cursos completos — texto, audio, interacciones y video.</p>
-                      <div class="toolrow"><span>Storyline 360</span><span>Rise 360</span><span>Captivate</span><span>Vyond</span></div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- PANEL 3: PORTFOLIO -->
+                <!-- PANEL 1: PORTFOLIO -->
                 <div class="page" data-page-name="Portfolio">
                   <div class="page-head">
                     <span class="tag">Portfolio</span>
@@ -238,31 +134,174 @@
                   </div>
                 </div>
 
-                <!-- PANEL 4: HERRAMIENTAS -->
-                <div class="page" data-page-name="Herramientas">
+                <!-- PANEL 2: SOBRE MÍ -->
+                <div class="page" data-page-name="Sobre mí">
+                  <div class="about-grid">
+                    <div class="about-photo">
+                      <img src="data:image/jpeg;base64,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" alt="Foto de Maximiliano Meneses">
+                    </div>
+
+                    <div class="about-bio">
+                      <span class="about-eyebrow">Conóceme</span>
+                      <h2>Sobre mí</h2>
+                      <div class="about-timeline">
+                        <div class="timeline-item">
+                          <strong>2018 – 2023</strong>
+                          <span>TransPerfect NYC, eLearning</span>
+                        </div>
+                        <div class="timeline-arrow">→</div>
+                        <div class="timeline-item now">
+                          <strong>Hoy</strong>
+                          <span>We Do — dtp &amp; ele</span>
+                        </div>
+                      </div>
+                      <p>Vengo del cruce entre la traducción y la maquetación. Cinco años en el equipo de eLearning de <strong>TransPerfect en Nueva York</strong>, ajustando cursos completos para que llegaran a cada mercado sin perder calidad.</p>
+                      <p>Hoy dirijo <strong>We Do</strong>, mi estudio de DTP y localización, como subcontratista de agencias de traducción y, en proyectos grandes, en cooperativa con un colega.</p>
+                    </div>
+
+                    <aside class="about-achievements">
+                      <div class="achievement">
+                        <div class="achievement-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                        <div><strong>+13 años</strong><p>en la industria de la localización</p></div>
+                      </div>
+                      <div class="achievement">
+                        <div class="achievement-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <div><strong>1.000+</strong><p>proyectos en eLearning, DTP y multimedia</p></div>
+                      </div>
+                      <div class="achievement">
+                        <div class="achievement-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+                        </div>
+                        <div><strong>Idiomas complejos</strong><p>CJK, RTL, cirílico, SEA y más</p></div>
+                      </div>
+                      <div class="achievement">
+                        <div class="achievement-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <div><strong>Trabajo con agencias</strong><p>bajo NDA, colaborando de cerca en la producción final</p></div>
+                      </div>
+                    </aside>
+                  </div>
+                </div>
+
+                <!-- PANEL 3: EXPERIENCIA -->
+                <div class="page" data-page-name="Experiencia">
                   <div class="page-head">
-                    <span class="tag">Herramientas</span>
-                    <h2>Con qué trabajo</h2>
+                    <span class="tag">Experiencia</span>
+                    <h2>Herramientas y especialidades</h2>
                   </div>
-                  <div class="toolgrid">
-                    <div class="tcard"><b>InDesign</b><span>Maquetación</span></div>
-                    <div class="tcard"><b>Illustrator</b><span>Arte vectorial</span></div>
-                    <div class="tcard"><b>Photoshop</b><span>Retoque e imagen</span></div>
-                    <div class="tcard"><b>Premiere Pro</b><span>Video y subtítulos</span></div>
-                    <div class="tcard"><b>Storyline 360</b><span>eLearning</span></div>
-                    <div class="tcard"><b>Rise 360</b><span>eLearning</span></div>
-                    <div class="tcard"><b>Captivate</b><span>eLearning</span></div>
-                    <div class="tcard"><b>Vyond</b><span>Animación</span></div>
+
+                  <div class="skills-grid">
+                    <div class="skill-track">
+                      <h3>Maquetación</h3>
+                      <p>Diseño editorial y documentación técnica multilingüe.</p>
+                      <div class="tool-cards">
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/indesign.png" alt="Adobe InDesign">
+                          <div><strong>InDesign</strong><span>Maquetación editorial</span></div>
+                        </div>
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/illustrator.png" alt="Adobe Illustrator">
+                          <div><strong>Illustrator</strong><span>Arte vectorial</span></div>
+                        </div>
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/photoshop.png" alt="Adobe Photoshop">
+                          <div><strong>Photoshop</strong><span>Retoque e imagen</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="skill-track">
+                      <h3>eLearning</h3>
+                      <p>Cursos completos — texto, audio, interacciones y video.</p>
+                      <div class="tool-cards">
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/storyline.png" alt="Storyline 360">
+                          <div><strong>Storyline 360</strong><span>Autoría interactiva</span></div>
+                        </div>
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/rise.png" alt="Articulate Rise">
+                          <div><strong>Rise 360</strong><span>Cursos responsivos</span></div>
+                        </div>
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/captivate.png" alt="Adobe Captivate">
+                          <div><strong>Captivate</strong><span>Simulaciones</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="skill-track">
+                      <h3>Video y ofimática</h3>
+                      <p>Edición de video, subtitulado y documentos técnicos.</p>
+                      <div class="tool-cards">
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/premiere.png" alt="Adobe Premiere">
+                          <div><strong>Premiere</strong><span>Video y subtítulos</span></div>
+                        </div>
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/word.png" alt="Microsoft Word">
+                          <div><strong>Word</strong><span>Documentación</span></div>
+                        </div>
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/excel.png" alt="Microsoft Excel">
+                          <div><strong>Excel</strong><span>Control y QA</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="skill-track">
+                      <h3>Web y presentaciones</h3>
+                      <p>Prototipado HTML y presentaciones profesionales.</p>
+                      <div class="tool-cards">
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/powerpoint.png" alt="Microsoft PowerPoint">
+                          <div><strong>PowerPoint</strong><span>Presentaciones</span></div>
+                        </div>
+                        <div class="tool-card">
+                          <img class="tool-icon" src="img/html5.png" alt="HTML5">
+                          <div><strong>HTML5</strong><span>Prototipos web</span></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                <!-- PANEL 4: CONTACTO -->
+                <div class="page" data-page-name="Contacto">
+                  <div class="page-head">
+                    <span class="tag">Contacto</span>
+                    <h2>Hablemos de tu proyecto</h2>
+                  </div>
+                  <div class="contact-grid">
+                    <a href="mailto:tu-email@wedo.studio" class="contact-card">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                      <strong>Email</strong>
+                      <span>tu-email@wedo.studio</span>
+                    </a>
+                    <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener" class="contact-card">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                      <strong>LinkedIn</strong>
+                      <span>linkedin.com/in/tu-usuario</span>
+                    </a>
+                    <div class="contact-card contact-card-static">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                      <strong>Ubicación</strong>
+                      <span>Santa Fe, Argentina</span>
+                    </div>
+                  </div>
+                  <p class="contact-note">Trabajo de forma remota con agencias y estudios de localización de todo el mundo.</p>
                 </div>
 
               </div>
             </div>
           </div>
 
-          <!-- 🔵 Flecha derecha + nombre del panel siguiente -->
-          <button type="button" class="carousel-arrow carousel-arrow-next" id="arrowNext" aria-label="Panel siguiente">
-            <span class="arrow-label" id="labelNext">Qué hago</span>
+          <button type="button" class="carousel-arrow" id="arrowNext" aria-label="Panel siguiente">
+            <span class="arrow-label" id="labelNext">Sobre mí</span>
             <span class="arrow-circle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </span>
@@ -272,18 +311,13 @@
       </div>
     </section>
 
-    <!-- ============================================
-         SECCIÓN 3: FOOTER (v1.6 - 4 columnas)
-         ============================================ -->
     <footer id="s3" class="footer-section">
       <div class="wrap footer-wrap">
         <div class="footer-grid">
-
           <div class="footer-cta">
             <span class="footer-rule"></span>
             <h3>¿Tenés un proyecto<br>de localización?</h3>
           </div>
-
           <div class="footer-contact">
             <a href="mailto:tu-email@wedo.studio">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -294,7 +328,6 @@
               linkedin.com/in/tu-usuario
             </a>
           </div>
-
           <div class="footer-brand">
             <div class="footer-logo">WD</div>
             <div class="footer-brand-text">
@@ -302,14 +335,12 @@
               <span>automatiza, ahorra tiempo, sé imparable.</span>
             </div>
           </div>
-
           <div class="footer-top">
             <a href="#s1" aria-label="Volver arriba">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
               Volver arriba
             </a>
           </div>
-
         </div>
       </div>
     </footer>
