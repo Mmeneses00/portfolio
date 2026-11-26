@@ -536,6 +536,43 @@ html{scroll-padding-top:96px}
 @media (max-width:899px){.pn-vis-el{max-width:none}}
 /* v3.4: sin viudas en los párrafos de los paneles (Chrome/Safari reparten mejor las líneas; el espacio duro cubre al resto) */
 .pn-txt p{text-wrap:pretty}
+/* v3.6: pop-up de contacto (blanco, ink y violeta; bordes de campo con contraste 3:1) */
+.cdlg{width:min(560px,calc(100vw - 32px));max-height:calc(100svh - 32px);padding:0;border:0;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 24px 64px rgba(22,24,29,.28);overflow:auto}
+.cdlg::backdrop{background:rgba(22,24,29,.55);backdrop-filter:blur(4px)}
+.cdlg[open]{animation:cdlgIn .3s cubic-bezier(.2,.7,.2,1)}
+@keyframes cdlgIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cdlg-in{position:relative;padding:40px}
+.cdlg h2{font:700 32px/1.15 var(--head);letter-spacing:-.01em;max-width:none}
+.cdlg-sub{margin-top:8px;color:var(--steel)}
+.cdlg-f{display:grid;gap:16px;margin-top:24px}
+.cdlg-f label{display:grid;gap:6px;font:600 13px/1.2 var(--head);color:var(--ink)}
+.cdlg-f input,.cdlg-f textarea{width:100%;font:400 16px/1.5 var(--text);color:var(--ink);background:#fff;border:1px solid #848F9B;border-radius:8px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
+.cdlg-f textarea{resize:vertical;min-height:120px}
+.cdlg-f input:focus,.cdlg-f textarea:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px rgba(91,33,182,.2)}
+.cdlg-f .btn{justify-self:start;margin-top:8px;border:0;cursor:pointer}
+.cdlg-ok{font-size:14px;color:var(--violet)}
+.cdlg-alt{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--steel)}
+.cdlg-alt a{color:var(--link)}
+.cdlg-copy{margin-left:8px;font:600 12px/1 var(--head);color:var(--ink);background:var(--ice);border:0;border-radius:999px;padding:6px 12px;cursor:pointer}
+.cdlg-x{position:absolute;top:16px;right:16px;width:40px;height:40px;border:0;border-radius:50%;background:var(--ice);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.cdlg-x svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.cdlg-x:hover,.cdlg-copy:hover{background:#E2E9F1}
+html:has(.cdlg[open]){overflow:hidden}
+@media (max-width:767px){.cdlg-in{padding:32px 24px}.cdlg h2{font-size:28px}}
+@media (prefers-reduced-motion:reduce){.cdlg[open]{animation:none}}
+/* v3.7: pop-up "Email me" (reemplaza al formulario de v3.6) */
+.cdlg-addr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:24px;padding:8px 8px 8px 20px;background:var(--ice);border-radius:12px}
+.cdlg-em{flex:1 1 auto;min-width:0;font:600 18px/1.3 var(--head);color:var(--ink);overflow-wrap:anywhere;user-select:all}
+.cdlg-cp{height:44px;padding:0 24px;border:0;cursor:pointer}
+.cdlg-st{min-height:21px;margin-top:8px;font-size:14px;color:var(--violet)}
+.cdlg-lbl{margin-top:16px;font:600 13px/1.2 var(--head);color:var(--ink)}
+.cdlg-apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.cdlg-apps .btn{justify-content:center;padding:0 12px;font-size:15px}
+.cdlg-li{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--steel)}
+.cdlg-li a{color:var(--link)}
+/* el email no se corta en "gmail. / com": entra en una línea y, en pantallas muy angostas, corta solo después de la @ */
+.cdlg-em{overflow-wrap:normal}
+@media (max-width:480px){.cdlg-addr{padding:16px}.cdlg-em{font-size:14px;flex-basis:100%}.cdlg-cp{width:100%;justify-content:center}.cdlg-apps{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -692,7 +729,7 @@ html{scroll-padding-top:96px}
         <h3 class="pn-title">Multilingual Desktop Publishing (DTP)</h3>
         <div class="pn-body pn-body-dtp">
           <div class="pn-txt">
-            <!-- v2.1: &lt;p>InDesign, Illustrator and Word files laid out in every language, with the original design intact.&lt;/p> --><!-- v2.6: &lt;p>Flyers, manuals and brochures laid out in every language. Same shape, same structure, same brand, a faithful mirror of the original source.&lt;/p> --><p>Flyers, manuals, brochures and many other kinds of documents laid out in every language. Same shape, same structure, same brand, a faithful mirror of the original&nbsp;source.</p><!-- v3.4: espacio duro entre las dos últimas palabras, para que no quede una sola colgada -->
+            <!-- v2.1: &lt;p>InDesign, Illustrator and Word files laid out in every language, with the original design intact.&lt;/p> --><!-- v2.6: &lt;p>Flyers, manuals and brochures laid out in every language. Same shape, same structure, same brand, a faithful mirror of the original source.&lt;/p> --><p>Flyers, manuals, brochures and many other kinds of documents laid out in every language. Same shape, same structure, same&nbsp;brand, a faithful mirror of the original&nbsp;source.</p><!-- v3.8: espacio duro en "same brand" para que "same" baje con "brand" --><!-- v3.4: espacio duro entre las dos últimas palabras, para que no quede una sola colgada -->
             <!-- v2.1: &lt;ul>&lt;li>InDesign · Illustrator · Photoshop · Word&lt;/li>&lt;li>&lt;span class="nw">Right-to-left&lt;/span> and CJK layouts&lt;/li>&lt;li>Print-ready PDFs&lt;/li>&lt;/ul> --><!-- v2.9: &lt;ul>&lt;li>InDesign&nbsp;· Illustrator&nbsp;· Photoshop&nbsp;· Word&lt;/li>&lt;!-- v2.7: espacio duro antes de cada punto, para que el · no empiece línea --&gt;&lt;li>&lt;span class="nw">Right-to-left&lt;/span> and CJK typography&lt;/li>&lt;li>Print-ready and digital PDFs&lt;/li>&lt;/ul> --><!-- v3.1: &lt;ul>&lt;li>&lt;span class="nw">Right-to-left&lt;/span> and CJK typesetting&lt;/li>&lt;li>Line breaks and fonts checked per language&lt;/li>&lt;li>Editable source files and print-ready PDFs&lt;/li>&lt;/ul> --><ul><li><span class="nw">Right-to-left</span> and CJK typesetting</li><li>Text expansion handled, layout intact</li><li>Editable source files and print-ready PDFs</li></ul>
           </div>
           <div class="pn-vis pn-vis-dtp" aria-hidden="true">
@@ -794,7 +831,7 @@ html{scroll-padding-top:96px}
         <div class="pn-body pn-body-mm">
           <div class="pn-txt">
             <!-- v2.1: &lt;p>Audio and video for courses: subtitles, voice-over sync and simple video edits, in every language.&lt;/p> --><p>Audio and video that speak every language. Subtitles, voice-over replacement and timeline sync, so every slide stays in step with its&nbsp;narration.</p><!-- v3.4: espacio duro entre las dos últimas palabras, para que no quede una sola colgada -->
-            <!-- v2.1: &lt;ul>&lt;li>Subtitles and captions (SRT, VTT)&lt;/li>&lt;li>Voice-over and audio sync&lt;/li>&lt;li>Premiere Pro · After Effects · Subtitle Edit&lt;/li>&lt;/ul> --><!-- v2.9: &lt;ul>&lt;li>Subtitles and captions (SRT, VTT)&lt;/li>&lt;li>Voice-over replacement and audio scripts&lt;/li>&lt;li>Premiere Pro · After Effects · Subtitle Edit&lt;/li>&lt;/ul> --><ul><li>Subtitles burned in or as SRT/VTT files</li><li>Voice-over replaced and synced to each slide</li><li>Audio scripts ready for the studio</li></ul>
+            <!-- v2.1: &lt;ul>&lt;li>Subtitles and captions (SRT, VTT)&lt;/li>&lt;li>Voice-over and audio sync&lt;/li>&lt;li>Premiere Pro · After Effects · Subtitle Edit&lt;/li>&lt;/ul> --><!-- v2.9: &lt;ul>&lt;li>Subtitles and captions (SRT, VTT)&lt;/li>&lt;li>Voice-over replacement and audio scripts&lt;/li>&lt;li>Premiere Pro · After Effects · Subtitle Edit&lt;/li>&lt;/ul> --><ul><li>Subtitles burned in or as SRT/VTT files</li><!-- v3.5: &lt;li>Voice-over replaced and synced to each slide&lt;/li> --><li>Voice-over replaced and synced</li><li>Audio scripts ready for the studio</li></ul>
           </div>
           <!-- v2.7: &lt;div class="pn-vis" aria-hidden="true"> -->
           <div class="pn-vis pn-vis-mm" aria-hidden="true">
@@ -811,11 +848,17 @@ html{scroll-padding-top:96px}
     <!-- v2.9: &lt;p class="lead tools">&lt;b>Tools:&lt;/b> Storyline 360, Rise 360, HTML, CSS and JavaScript, InDesign, Illustrator, Photoshop.&lt;/p> -->
     <div class="lead tools tg"><b>Tools</b>
       <!-- v3.2: &lt;p>&lt;strong>DTP&lt;/strong>&lt;span>Microsoft Office&lt;/span>&lt;span>Adobe Creative Cloud &lt;span class="nw">(InDesign, Illustrator, Photoshop)&lt;/span>&lt;/span>&lt;/p> -->
-      <p><strong>DTP</strong><span>Microsoft Office</span><span>Adobe Creative Cloud <span class="nw">(InDesign, Illustrator, Photoshop)</span></span><span>Canva and Figma</span></p>
+      <!-- v3.4: &lt;p>&lt;strong>DTP&lt;/strong>&lt;span>Microsoft Office&lt;/span>&lt;span>Adobe Creative Cloud &lt;span class="nw">(InDesign, Illustrator, Photoshop)&lt;/span>&lt;/span>&lt;span>Canva and Figma&lt;/span>&lt;/p> -->
+      <!-- v3.5: una línea por empresa (marca una sola vez + sus programas); si tiene un solo programa, va solo -->
+      <!-- v3.7: &lt;p>&lt;strong>DTP&lt;/strong>&lt;span>Adobe InDesign, Illustrator, Photoshop&lt;/span>&lt;span>Microsoft Word, PowerPoint&lt;/span>&lt;span>Canva&lt;/span>&lt;span>Figma&lt;/span>&lt;/p> -->
+      <p><strong>DTP</strong><span>Canva, Figma</span><span>Adobe InDesign, Illustrator, Photoshop</span><span>Microsoft Word, PowerPoint, Excel</span></p>
       <!-- v3.2: &lt;p>&lt;strong>eLearning&lt;/strong>&lt;span>Articulate 360 &lt;span class="nw">(Storyline, Rise)&lt;/span>&lt;/span>&lt;span>HTML, CSS and JavaScript&lt;/span>&lt;/p> -->
-      <p><strong>eLearning</strong><span>Articulate 360 <span class="nw">(Storyline, Rise, Review)</span></span><span>Adobe Captivate</span></p>
+      <!-- v3.4: &lt;p>&lt;strong>eLearning&lt;/strong>&lt;span>Articulate 360 &lt;span class="nw">(Storyline, Rise, Review)&lt;/span>&lt;/span>&lt;span>Adobe Captivate&lt;/span>&lt;/p> -->
+      <p><strong>eLearning</strong><span>Articulate Storyline, Rise, Review</span><span>Adobe Captivate</span></p>
       <!-- v3.2: &lt;p>&lt;strong>Multimedia&lt;/strong>&lt;span>Adobe Premiere Pro and After Effects&lt;/span>&lt;span>Subtitle Edit&lt;/span>&lt;/p> -->
-      <p><strong>Multimedia</strong><span>Adobe Premiere Pro and After Effects</span><span>Vyond and Google Vids</span><span>Subtitle Edit</span></p>
+      <!-- v3.4: &lt;p>&lt;strong>Multimedia&lt;/strong>&lt;span>Adobe Premiere Pro and After Effects&lt;/span>&lt;span>Vyond and Google Vids&lt;/span>&lt;span>Subtitle Edit&lt;/span>&lt;/p> -->
+      <!-- v3.7: &lt;p>&lt;strong>Multimedia&lt;/strong>&lt;span>Adobe Premiere Pro, After Effects&lt;/span>&lt;span>Vyond&lt;/span>&lt;span>Google Vids&lt;/span>&lt;span>Subtitle Edit&lt;/span>&lt;/p> -->
+      <p><strong>Multimedia</strong><span>Subtitle Edit, Vyond, Google Vids</span><span>Adobe Premiere Pro, After Effects</span></p>
     </div>
   </div>
 </section>
@@ -826,7 +869,7 @@ html{scroll-padding-top:96px}
   <div class="wrap">
     <div class="sec-head"><!-- <span class="cap inv">Experience</span> --><h2 id="exp-h">Fourteen years, one craft</h2></div>
     <ol class="tl">
-      <li tabindex="0"><span class="yr">2023 – today</span><div><!-- v1.6: &lt;h3>Founder, We Do&lt;/h3>&lt;p class="where">DTP and eLearning studio · Santa Fe, Argentina&lt;/p>&lt;p class="what">Building and localizing courses and multilingual layouts for localization agencies, with a small team.&lt;/p> --><h3>Multilingual DTP &amp; eLearning Specialist</h3><p class="where">Freelance, remote · Founder, We Do</p><p class="what">Independent production partner for international translation agencies. I take localized content from translated text to final, publish-ready files, in print and eLearning, often as the last step before delivery to the end client.</p><!-- v1.6 etiquetas (sacadas en v1.7): Storyline 360, Rise 360, Multilingual DTP, Studio with two partners --></div></li>
+      <li tabindex="0"><span class="yr">2023 – today</span><div><!-- v1.6: &lt;h3>Founder, We Do&lt;/h3>&lt;p class="where">DTP and eLearning studio · Santa Fe, Argentina&lt;/p>&lt;p class="what">Building and localizing courses and multilingual layouts for localization agencies, with a small team.&lt;/p> --><h3>Multilingual DTP &amp; eLearning Specialist</h3><!-- v3.5: &lt;p class="where">Freelance, remote · Founder, We Do&lt;/p> --><p class="where">Freelance, remote</p><p class="what">Independent production partner for international translation agencies. I take localized content from translated text to final, publish-ready files, in print and eLearning, often as the last step before delivery to the end client.</p><!-- v1.6 etiquetas (sacadas en v1.7): Storyline 360, Rise 360, Multilingual DTP, Studio with two partners --></div></li>
       <li tabindex="0"><span class="yr">2018 – 2023</span><div><!-- v2.4: &lt;h3>TransPerfect&lt;/h3>&lt;p class="where">eLearning team, New York (remote)&lt;/p>&lt;p class="what">Multilingual Storyline 360 and Rise courses, HTML, CSS and JavaScript adjustments in published courses, &lt;span class="nw">right-to-left&lt;/span> solutions and multimedia.&lt;/p> --><h3>eLearning Engineer</h3><p class="where">TransPerfect · eLearning team, <span class="nw">New York (remote)</span></p><!-- v2.5: &lt;p class="what">Multilingual Storyline 360 and Rise courses for global clients. I adjusted published courses with HTML, CSS and JavaScript, built &lt;span class="nw">right-to-left&lt;/span> solutions and synced audio and video in every language.&lt;/p> --><p class="what">Five years at one of the world’s largest language companies. I localized Storyline 360 and Rise courses for global clients, adjusted the published output with HTML, CSS and JavaScript, built <span class="nw">right-to-left</span> solutions and synced audio and video in every language.</p><!-- v2.2: &lt;div class="more">&lt;div>&lt;p class="tags">&lt;span>Storyline 360&lt;/span>&lt;span>Rise 360&lt;/span>&lt;span>HTML · CSS · JavaScript&lt;/span>&lt;span>Right-to-left&lt;/span>&lt;span>Remote, New York team&lt;/span>&lt;/p>&lt;/div>&lt;/div> --></div></li>
       <!-- v2.5: fila nueva, etapa freelance del CV --><li tabindex="0"><span class="yr">2017 – 2018</span><div><h3>Multilingual DTP &amp; eLearning Specialist</h3><p class="where">Freelance, remote</p><!-- v2.5: &lt;p class="what">Multilingual DTP and eLearning projects for localization agencies.&lt;/p> --><p class="what">Laying out documents and building eLearning courses in many languages for translation agencies.</p></div></li>
       <li tabindex="0"><span class="yr">2016 – 2017</span><div><!-- v2.4: &lt;h3>Technelion LLC&lt;/h3>&lt;p class="where">Rosario, Argentina&lt;/p>&lt;p class="what">DTP and eLearning, QA, and mentoring junior DTP designers.&lt;/p> --><!-- v2.5: &lt;h3>DTP &amp; eLearning Specialist&lt;/h3> --><h3>Multilingual DTP &amp; eLearning Specialist</h3><p class="where">Technelion LLC · Rosario, Argentina</p><!-- v2.5: &lt;p class="what">Multilingual DTP and eLearning projects with QA before delivery. I also trained and mentored junior DTP designers.&lt;/p> --><p class="what">DTP and eLearning projects, always with a QA pass before delivery. I also helped train the junior DTP designers on the team.</p><!-- v2.2: &lt;div class="more">&lt;div>&lt;p class="tags">&lt;span>InDesign&lt;/span>&lt;span>eLearning&lt;/span>&lt;span>QA&lt;/span>&lt;span>Mentoring&lt;/span>&lt;/p>&lt;/div>&lt;/div> --></div></li>
@@ -857,15 +900,53 @@ html{scroll-padding-top:96px}
 <!--         <p class="url"><a href="https://www.linkedin.com/in/maximiliano-meneses-76617916b/">linkedin.com/in/maximiliano-meneses-76617916b</a></p> -->
       </div>
       <span class="c-arrow" aria-hidden="true"><svg viewBox="0 0 26 38"><path d="M13 3v29M5 23l8 9 8-9"/></svg></span>
-      <a class="btn btn-o cta-cap" href="https://www.linkedin.com/in/maximiliano-meneses-76617916b/">Message me on LinkedIn <span class="arr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <!-- v3.5: &lt;a class="btn btn-o cta-cap" href="https://www.linkedin.com/in/maximiliano-meneses-76617916b/">Message me on LinkedIn &lt;span class="arr" aria-hidden="true">&lt;svg width="16" height="16" viewBox="0 0 16 16">&lt;path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>&lt;/svg>&lt;/span>&lt;/a> -->
+      <!-- v3.6: &lt;a … data-contact>Get in touch … --><a class="btn btn-o cta-cap" href="mailto:maximiliano.meneses10@gmail.com?subject=Contact%20from%20your%20portfolio" data-contact><!-- v3.7: Email me -->Contact me <span class="arr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
     </div>
   </div>
 </section>
 
+<!-- v3.6: pop-up de contacto. Arma el mail con el mensaje y abre la app de correo del visitante.
+     El email se cambia en un solo lugar: data-email. -->
+<!-- v3.6 (reemplazado en v3.7: sin programa de correo instalado, el mailto no hacía nada)
+<dialog class="cdlg" id="cdlg" data-email="tu-email@ejemplo.com" aria-labelledby="cdlg-h">
+  <div class="cdlg-in">
+    <button class="cdlg-x" type="button" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    <h2 id="cdlg-h">Let’s talk</h2>
+    <p class="cdlg-sub">Tell me a bit about your project or role.</p>
+    <form class="cdlg-f">
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      <label>Message<textarea name="msg" rows="5" required></textarea></label>
+      <button class="btn btn-p" type="submit">Send message <span class="arr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+      <p class="cdlg-ok" role="status" hidden>Your email app should open with the message ready to send.</p>
+    </form>
+    <p class="cdlg-alt">Or write to <a class="cdlg-mail" href="mailto:tu-email@ejemplo.com">tu-email@ejemplo.com</a> <button class="cdlg-copy" type="button">Copy</button></p>
+  </div>
+</dialog>
+fin v3.6 -->
+<!-- v3.7: pop-up "Email me". Lo principal es copiar el email (anda siempre) y abrir un mail nuevo en Gmail, Outlook o la app de correo -->
+<dialog class="cdlg" id="cdlg" data-email="maximiliano.meneses10@gmail.com" aria-labelledby="cdlg-h">
+  <div class="cdlg-in">
+    <button class="cdlg-x" type="button" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    <h2 id="cdlg-h">Email me</h2>
+    <p class="cdlg-sub">For projects or roles, write to me directly.</p>
+    <div class="cdlg-addr"><span class="cdlg-em">maximiliano.meneses10@<wbr>gmail.com</span><button class="btn btn-p cdlg-cp" type="button">Copy</button></div>
+    <p class="cdlg-st" role="status" aria-live="polite"></p>
+    <p class="cdlg-lbl">Or start a new email in</p>
+    <div class="cdlg-apps">
+      <a class="btn btn-s" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=maximiliano.meneses10@gmail.com&amp;su=Contact%20from%20your%20portfolio" target="_blank" rel="noopener">Gmail</a>
+      <a class="btn btn-s" href="https://outlook.office.com/mail/deeplink/compose?to=maximiliano.meneses10@gmail.com&amp;subject=Contact%20from%20your%20portfolio" target="_blank" rel="noopener">Outlook</a>
+      <a class="btn btn-s" href="mailto:maximiliano.meneses10@gmail.com?subject=Contact%20from%20your%20portfolio">Mail app</a>
+    </div>
+    <p class="cdlg-li">Prefer LinkedIn? <a href="https://www.linkedin.com/in/maximiliano-meneses-76617916b/" target="_blank" rel="noopener">Message me there</a></p>
+  </div>
+</dialog>
+
 <footer class="foot">
   <div class="wrap">
     <a class="brand" href="#top"><svg aria-hidden="true"><use href="#m"/></svg>Maximiliano Meneses</a>
-    <span>© 2026 Maximiliano Meneses. Founder, We Do (dtp &amp; ele). <a class="lnk" href="https://www.linkedin.com/in/maximiliano-meneses-76617916b/">LinkedIn</a></span>
+    <!-- v3.5: &lt;span>© 2026 Maximiliano Meneses. Founder, We Do (dtp &amp;amp; ele). … --><span>© 2026 Maximiliano Meneses. <a class="lnk" href="https://www.linkedin.com/in/maximiliano-meneses-76617916b/">LinkedIn</a></span>
   </div>
 </footer>
 
@@ -1116,5 +1197,66 @@ fin v1.4 */
   }
 }
 </script>
-</body>
-</html>
+<!-- v3.6 (reemplazado en v3.7)
+<script>
+/* v3.6: pop-up de contacto. Sin JS, el botón queda como link mailto común */
+{
+  const dlg = document.getElementById('cdlg');
+  if (dlg && dlg.showModal) {
+    const email = dlg.dataset.email;
+    const form = dlg.querySelector('form');
+    const ok = dlg.querySelector('.cdlg-ok');
+    const copy = dlg.querySelector('.cdlg-copy');
+    dlg.querySelectorAll('.cdlg-mail').forEach(a => { a.href = 'mailto:' + email; a.textContent = email; });
+    document.querySelectorAll('[data-contact]').forEach(b => {
+      b.href = 'mailto:' + email;
+      b.addEventListener('click', e => { e.preventDefault(); ok.hidden = true; dlg.showModal(); form.elements.name.focus(); });
+    });
+    dlg.querySelector('.cdlg-x').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const d = new FormData(form);
+      const subject = 'Portfolio contact: ' + d.get('name');
+      const body = d.get('msg') + '\n\n' + d.get('name') + '\n' + d.get('email');
+      location.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      ok.hidden = false;
+    });
+    copy.addEventListener('click', () => {
+      const done = () => { copy.textContent = 'Copied'; setTimeout(() => { copy.textContent = 'Copy'; }, 2000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(email).then(done, () => {}); 
+    });
+  }
+}
+</script>
+fin v3.6 -->
+<script>
+/* v3.7: pop-up "Email me". Sin JS, el botón queda como link mailto común */
+{
+  const dlg = document.getElementById('cdlg');
+  if (dlg && dlg.showModal) {
+    const email = dlg.dataset.email;
+    const cp = dlg.querySelector('.cdlg-cp');
+    const st = dlg.querySelector('.cdlg-st');
+    document.querySelectorAll('[data-contact]').forEach(b => b.addEventListener('click', ev => {
+      ev.preventDefault(); st.textContent = ''; cp.textContent = 'Copy'; dlg.showModal(); cp.focus();
+    }));
+    dlg.querySelector('.cdlg-x').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', ev => { if (ev.target === dlg) dlg.close(); });
+    const fallback = () => {
+      const t = document.createElement('textarea'); t.value = email; t.setAttribute('readonly', '');
+      t.style.cssText = 'position:fixed;opacity:0'; dlg.appendChild(t); t.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      t.remove(); return ok;
+    };
+    const done = ok => {
+      if (ok) { cp.textContent = 'Copied'; st.textContent = 'Copied. Paste it into your email.'; }
+      else { st.textContent = 'Select the address above and copy it.'; const r = document.createRange(); r.selectNodeContents(dlg.querySelector('.cdlg-em')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    };
+    cp.addEventListener('click', () => {
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(email).then(() => done(true), () => done(fallback()));
+      else done(fallback());
+    });
+  }
+}
+</script>
